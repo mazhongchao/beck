@@ -16,6 +16,6 @@ beck's directory structure
         |-- asset
         |-- lib
         |-- theme
-        `-- <admin_files>        
+        `-- <admin_files>
 ```
 
