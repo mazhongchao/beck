@@ -14,6 +14,7 @@ beck's directory structure
     |   `-- <user_dirs & user_files>
     |-- sys                      # admin's root
         |-- asset
+        |-- data
         |-- lib
         |-- theme
         `-- <admin_files>
