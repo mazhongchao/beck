@@ -1,0 +1,16 @@
+CREATE TABLE `bk_article` (
+  `id` INT(11) UNSIGNED NOT NULL,
+  `title` VARCHAR(255) NOT NULL DEFAULT '',
+  `alias` VARCHAR(255) NOT NULL DEFAULT '',
+  `content` TEXT NOT NULL,
+  `category_id` INT(11) NOT NULL DEFAULT 1,
+  `tag` VARCHAR(255) NOT NULL DEFAULT '',
+  `text_type` CHAR(10) NOT NULL DEFAULT 'html',
+  `is_publish` INT(1) NOT NULL DEFAULT 0,
+  `is_delete` INT(1) NOT NULL DEFAULT 0,
+  `is_sync` INT(1) NOT NULL DEFAULT 0,
+  `created_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`),
+  INDEX `IDX_CATE` (`category_id` ASC),
+) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
