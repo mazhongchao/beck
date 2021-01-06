@@ -9,11 +9,11 @@ beck's directory structure
 ```
 |-- beck                         # beck
     |-- public                   # site's root
-    |   |-- asset
+    |   |-- static
     |   |-- ssi                  # server side include directory
     |   `-- <user_dirs & user_files>
     |-- sys                      # admin's root
-        |-- asset
+        |-- static
         |-- data
         |-- lib
         |-- theme
