@@ -10,7 +10,7 @@ beck's directory structure
 |-- beck                         # beck
     |-- public                   # site's root
     |   |-- static
-    |   |-- ssi                  # server side include directory
+    |   |-- ssi
     |   `-- <user_dirs & user_files>
     |-- sys                      # admin's root
         |-- static
