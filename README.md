@@ -1,10 +1,10 @@
-# What is beck?
+# What is Beck?
 
-beck is a very small system written in PHP for generating static web pages.
+Beck is a very small system written in PHP for generating static web pages.
 
 ## Structure
 
-beck's directory structure
+Beck's directory structure
 
 ```
 |-- beck                         # beck
