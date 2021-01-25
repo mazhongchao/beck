@@ -1,5 +1,5 @@
 CREATE TABLE `bk_article` (
-  `id` INT(11) UNSIGNED NOT NULL,
+  `id` INT(10) UNSIGNED NOT NULL,
   `title` VARCHAR(255) NOT NULL DEFAULT '',
   `alias` VARCHAR(255) NOT NULL DEFAULT '',
   `content` TEXT NOT NULL,
@@ -15,7 +15,7 @@ CREATE TABLE `bk_article` (
   INDEX `IDX_CATE` (`category_id` ASC),
 ) ENGINE = InnoDB DEFAULT CHARACTER SET = utf8mb4;
 CREATE TABLE `bk_user` (
-  `id` INT(11) UNSIGNED NOT NULL,
+  `id` INT(10) UNSIGNED NOT NULL,
   `login_acc` VARCHAR(255) NOT NULL DEFAULT '',
   `login_pwd` VARCHAR(255) NOT NULL DEFAULT '',
   `user_name` VARCHAR(50) NOT NULL DEFAULT '',
