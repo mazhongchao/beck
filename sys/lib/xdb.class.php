@@ -42,15 +42,114 @@ class Xdb
                 throw new InvalidArgumentException('Invalid DSN');
             }
         }
+        else {
+            if (isset($options['port']) && is_int($options['port']*1) && $options['port']*1 > 0) {
+                $port = $options['port'];
+            }
+
+            $has_port = isset($port);
+
+            switch($this->type) {
+                case 'mysql':
+                    $attr = [
+                        'driver' => 'mysql',
+                        'dbname' => $options['db_name']
+                    ];
+                    if (isset($options['socket'])) {
+                        $attr['unix_socket'] = $options['socket'];
+                    }
+                    else {
+                        $attr['host'] = $options['host'];
+                        if ($has_port) {
+                            $attr['port'] = $port;
+                        }
+                    }
+                    break;
+
+                case 'pgslq':
+                    $attr = [
+                        'driver' => 'pgsql',
+                        'host' => $options['host'],
+                        'dbname' => $options['db_name']
+                    ];
+                    if ($has_port) {
+                        $attr['port'] = $port;
+                    }
+                    break;
+
+                case 'oracle':
+                    $attr = [
+                        'driver' => 'oci',
+                        'dbname' => $options['host'] ? '//'.$options['host'].($has_port ? ':'.$port:':1521').'/'.$options['db_name']:$options['db_name']
+                    ];
+                    if (isset($options['charset'])) {
+                        $attr['charset'] = $options['cahrset'];
+                    }
+                    break;
+
+                case 'mssql':
+                    if(isset($options['driver']) && $options['driver'] == 'dblib') {
+                        $attr = [
+                            'driver' => 'dblib',
+                            'host' => $options['server'].($has_port ? ':'.$port : ''),
+                            'dbname' => $options['db_name']
+                        ];
+
+                        if (isset($options['appname'])) {
+                            $attr['appname'] = $options['appname'];
+                        }
+                        if (isset($options['charset'])) {
+                            $attr['charset'] = $options['charset'];
+                        }
+                    }
+                    //driver = 'sqlsrv'
+                    else {
+                        //TODO....
+                    }
+                    break;
+
+                case 'sqlite':
+                    $attr = [
+                        'driver' => 'sqlite',
+                        $options['db_file']
+                    ];
+                    break;
+            }
+        }
+        if (!isset(attr)) {
+            throw new InvalidArgumentException('Incorrect connection options');
+        }
+
+        $arr = [];
+        $driver = $attr['driver'];
+        foreach ($attr as $key => $value) {
+            $arr[] = $key.'='.$value;
+        }
+        $dsn = $driver.':'.implode(';', $arr);
+
+        if (in_array($this->type, ['mysql', 'pgsql', 'mssql']) && isset($options['charset'])) {
+            $commands[] = "SET NAMES '{$options['charset']}'".(
+                        $this->type == 'mysql' && isset(['collation']) ?
+                        " COLLATE '{$option['collation']}'" : ''
+            );
+        }
+        $this->dsn = $dsn;
+
+        try {
+            $this->pdo = new PDO(
+                $dsn,
+                isset($options['username']) ? $options['username'] : null,
+                isset($options['password']) ? $options['password'] : null,
+                $option
+            );
+
+            foreach ($commands as $value) {
+                $this->pdo->exec($value);
+            }
+        }
+        catch (PDOException $e) {
+            throw new Exception($e->getMessage());
+        }
     }
-
-    // public static function getInstance()
-    // {
-    //     if(empty(self::$instance)){
-    //         self::$instance = new Xdb();
-    //     }
-    //     return self::$instance;
-    // }
-
 }
 
