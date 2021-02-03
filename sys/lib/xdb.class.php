@@ -2,7 +2,7 @@
 class Xdb
 {
     private $pdo = null;
-    private $dns = '';
+    private $dsn = '';
     private $type;
 
     public function __construct($options){
@@ -30,6 +30,14 @@ class Xdb
             if(!$options['pdo'] instanceof PDO) {
                 throw new InvalidArgumentException('Invalid POD object')
             }
+
+            $this->pdo = $options[ 'pdo' ];
+
+            foreach ($commands as $value)
+            {
+                $this->pdo->exec($value);
+            }
+            return;
         }
         if (isset($options['dsn'])) {
             if (is_array($options['dsn']) && isset($options['dsn']['driver'])) {
@@ -66,7 +74,7 @@ class Xdb
                     }
                     break;
 
-                case 'pgslq':
+                case 'pgsql':
                     $attr = [
                         'driver' => 'pgsql',
                         'host' => $options['host'],
@@ -83,7 +91,7 @@ class Xdb
                         'dbname' => $options['host'] ? '//'.$options['host'].($has_port ? ':'.$port:':1521').'/'.$options['db_name']:$options['db_name']
                     ];
                     if (isset($options['charset'])) {
-                        $attr['charset'] = $options['cahrset'];
+                        $attr['charset'] = $options['charset'];
                     }
                     break;
 
