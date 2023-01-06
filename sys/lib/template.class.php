@@ -1,9 +1,8 @@
 <?php
 class Template
 {
-
     protected $config = [
-        'path' => '',
+        'path' => '../templates',
     ];
     protected $data = [];
 
