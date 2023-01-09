@@ -1,20 +1,36 @@
 <?php
-require 'config.php';
+require 'base.php';
 
-if($_SESSION['bkssid']){
-    header("Location: ./bk-admin.php");
-    exit();
-}
-if (!empty($login_acc = $_POST['login_acc']) && !empty($login_pwd = $_POST['login_pwd'])) {
-    $ret = Auth::user_signin($login_acc, $login_acc);
+if (isset($_POST['login_acc']) && isset($_POST['login_pwd'])) {
+    $login_acc = $_POST['login_acc'];
+    $login_pwd = $_POST['login_pwd'];
+    $ret = Auth::user_signin($login_acc, $login_pwd);
+
     if ($ret == true) {
-        header("Location: ./bk-admin.php");
+        $_SESSION['bksessid'] = session_id();
+        header("Location: ./dashboard.php");
         exit();
     }
     else {
         echo "Error";
     }
 }
+
+if (isset($_SESSION['bksessid'])) {
+    header("Location: ./dashboard.php");
+    exit();
+}
+
+// if (!empty($login_acc = $_POST['login_acc']) && !empty($login_pwd = $_POST['login_pwd'])) {
+//     $ret = Auth::user_signin($login_acc, $login_acc);
+//     if ($ret == true) {
+//         header("Location: ./bk-admin.php");
+//         exit();
+//     }
+//     else {
+//         echo "Error";
+//     }
+// }
 ?>
 <!DOCTYPE html>
 <html>
@@ -23,7 +39,7 @@ if (!empty($login_acc = $_POST['login_acc']) && !empty($login_pwd = $_POST['logi
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="keywords" content=""/>
 <meta name="description" content=""/>
-<link href="./static/css/login-style.css" rel="stylesheet" type="text/css" />
+<link href="./static/login-style.css" rel="stylesheet" type="text/css" />
 <style>
 body {background-color: #f5f5f5;}
 </style>

@@ -1,5 +1,5 @@
 <?php
-function autoload($class_name) {
+function class_autoloader($class_name) {
     $class_name = strtolower($class_name);
     $class_file = __DIR__.'/' . $class_name . '.class.php';
 
@@ -9,4 +9,4 @@ function autoload($class_name) {
     return (class_exists($class_name, false) || interface_exists($class_name, false));
 }
 
-spl_autoload_register('autoload');
+spl_autoload_register('class_autoloader');
