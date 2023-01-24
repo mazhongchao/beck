@@ -1,37 +1,26 @@
 <?php
 class Template
 {
-    protected $config = [
-        'path' => '../templates',
-    ];
+    protected $path = "";
     protected $data = [];
 
-    public function __construct(array $config) {
-        $this->config = array_merge($this->config, $config);
+    public function __construct($path = "./") {
+        $this->path = $path;
     }
 
-    public function render($tpl, array $data = []) {
-        $output = $this->fetch($tpl, $data);
-        echo $output;
-    }
-
-    private function fetch($tpl, array $data = []) {
-        $this->assign($data);
-
+    public function display($tpl_file) {
         ob_start();
         extract($this->data);
-
-        include $this->get_template($tpl);
+        if (!file_exists($this->path.DIRECTORY_SEPARATOR.$tpl_file)) {
+            return;
+        }
+        include $this->path.DIRECTORY_SEPARATOR.$tpl_file;
         $content = ob_get_clean();
         ob_end_clean();
         return $content;
     }
 
-    private function assign(array $data) {
+    public function assign(array $data) {
         $this->data = array_merge($this->data, $data);
-    }
-
-    private function get_template($tpl) {
-        return $this->config['path'].'/'.$tpl;
     }
 }
