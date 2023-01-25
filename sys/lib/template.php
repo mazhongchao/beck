@@ -1,10 +1,13 @@
 <?php
+
+use JetBrains\PhpStorm\NoReturn;
+
 class Template
 {
-    protected $path = "";
-    protected $data = [];
+    protected mixed $path = "";
+    protected array $data = [];
 
-    public function __construct($path = "./") {
+    public function __construct($path = "./template") {
         $this->path = $path;
     }
 
@@ -17,7 +20,7 @@ class Template
         include $this->path.DIRECTORY_SEPARATOR.$tpl_file;
         $content = ob_get_clean();
         ob_end_clean();
-        return $content;
+        echo $content;
     }
 
     public function assign(array $data) {
