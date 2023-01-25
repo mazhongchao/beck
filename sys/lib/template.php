@@ -1,7 +1,4 @@
 <?php
-
-use JetBrains\PhpStorm\NoReturn;
-
 class Template
 {
     protected mixed $path = "";
