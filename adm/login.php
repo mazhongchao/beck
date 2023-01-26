@@ -2,7 +2,7 @@
 require 'base.php';
 
 if (isset($_SESSION['bk_sess'])) {
-    header("Location: ".ADM_DIR."dashboard.php");
+    header("Location: ./dashboard.php");
     return;
 }
 
@@ -22,7 +22,7 @@ if (isset($_POST['login_acc']) && isset($_POST['login_pwd'])) {
         }
 
         $_SESSION['bk_sess'] = session_id();
-        header("Location: ".ADM_DIR."dashboard.php");
+        header("Location: ./dashboard.php");
         exit;
     }
     else {
