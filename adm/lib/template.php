@@ -4,7 +4,7 @@ class Template
     protected mixed $path = "";
     protected array $data = [];
 
-    public function __construct($path = "./template") {
+    public function __construct($path = "../template") {
         $this->path = $path;
     }
 

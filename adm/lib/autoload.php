@@ -7,8 +7,8 @@ function class_autoloader($class_name): bool
     if (isset($class_file) && file_exists($class_file)) {
         require_once $class_file;
     }
-    return true;
-    //return (class_exists($class_name, false) || interface_exists($class_name, false));
+
+    return (class_exists($class_name, false) || interface_exists($class_name, false));
 }
 
 spl_autoload_register('class_autoloader');

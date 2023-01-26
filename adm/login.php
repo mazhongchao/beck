@@ -2,23 +2,17 @@
 require 'base.php';
 
 if (isset($_SESSION['bk_sess'])) {
-    header("Location: ".SYS_DIR."dashboard.php");
+    header("Location: ".ADM_DIR."dashboard.php");
     return;
 }
 
-$view = new Template(SYS_DIR."admin-template");
+$view = new Template(ADM_DIR."template/admin");
 
 if (isset($_POST['login_acc']) && isset($_POST['login_pwd'])) {
-    echo "login....";
     $login_acc = trim($_POST['login_acc']);
     $login_pwd = trim($_POST['login_pwd']);
-    var_dump($login_acc);
-    var_dump($login_pwd);
 
     $ret = Auth::verifyUser($login_acc, $login_pwd);
-    var_dump($ret);
-    //exit(0);
-
     if ($ret == true) {
         var_dump(Auth::initStatus($login_acc));
         if (Auth::initStatus($login_acc)) {
@@ -28,7 +22,8 @@ if (isset($_POST['login_acc']) && isset($_POST['login_pwd'])) {
         }
 
         $_SESSION['bk_sess'] = session_id();
-        header("Location: ".SYS_DIR."dashboard.php");
+        header("Location: ".ADM_DIR."dashboard.php");
+        exit;
     }
     else {
         $error_msg = "用户名或密码错误";
@@ -39,11 +34,9 @@ if (isset($_POST['login_acc']) && isset($_POST['login_pwd'])) {
 }
 
 else if (isset($_POST['new_pwd'])) {
-    echo "update....";
     $new_pwd = trim($_POST['new_pwd']);
     $login_acc = trim($_POST['login_acc']);
-    var_dump($new_pwd);
-    var_dump($login_acc);
+
     if (Auth::updateInitStatus($login_acc, $new_pwd)) {
         $init_msg = "密码更新完成，请使用新密码登录";
         $view->assign(['msg' => $init_msg]);
@@ -54,10 +47,7 @@ else if (isset($_POST['new_pwd'])) {
 }
 
 else {
-    echo "init....<br/>";
     $ret = Auth::init();
-    var_dump($ret);
-    exit(0);
     if ($ret !== false) {
         $init_msg = "初始账号和密码是: admin/{$ret}。该密码仅显示一次，请立即登录并更改密码，否则将无法使用Beck";
         $view->assign(['msg' => $init_msg]);
@@ -65,11 +55,4 @@ else {
         return;
     }
 }
-//else if ($ret = Auth::init()) {
-//    echo "init...";
-//    $init_msg = "初始账号和密码是: admin/{$ret}。该密码仅显示一次，请立即登录并更改密码，否则将无法使用Beck";
-//    $view->assign(['msg' => $init_msg]);
-//    $view->display('login.html');
-//    return;
-//}
 
