@@ -15,23 +15,25 @@ Beck's directory structure
     |   |-- tempalte/
     |   `-- <other_admin_files>
     |-- public                   # site's root
+        |-- index.html
         |-- static/
         |-- ssi/
-        |   |-- head.hml
-        |   |-- head_nav.html
-        |   |-- foot.html
+        |   |-- body.html
+        |   |-- header.html
+        |   |-- header_nav.html
+        |   |-- footer.html
         |   |-- sidebar.html
         |   |-- pagination.html
         |-- archive/
         |   |-- index.html
         |   |-- yyyy
-        |   |   |-- index.html
-        |   |   `-- mm
-        |   |       `-- index.html
+        |       |-- index.html
+        |       `-- mm
+        |           `-- index.html
         |-- tag/
         |   `--index.html
-        |-- <site category dirs>
-        |   `-- index.html
-        `-- index.html
+        `-- <site category dirs>
+            `-- index.html
+        
 ```
 
