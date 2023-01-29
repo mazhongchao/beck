@@ -1,0 +1,72 @@
+<html>
+<head>
+    <title>Beck Index</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="./static/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div class="header">
+    <div class="logo">BECK</div>
+    <ul class="main-nav">
+        <li><span class="current-menu">内容</span></li>
+        <li><a href="#">类别</a></li>
+        <li><a href="#">外观</a></li>
+        <li><a href="#">设置</a></li>
+    </ul>
+    <ul class="sub-nav">
+        <li><a class="selected" href="/article-list.php">文章</a></li>
+        <li><a href="">页面</a></li>
+        <li><a href="">首页</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <div class="content-block">
+        <form class="">
+            <div class="input-row">
+                <label class="" for="article_title">标题</label>
+                <input type="text" id="article_title" class="" />
+            </div>
+            <div class="input-row">
+                <label class="" for="article_title">别名</label>
+                <input type="text" id="article_alias" class="" />
+                <div class="txt-gray">用作保存文章的HTML的文件名，只能是小写字母、数字和连字符(-)</div>
+            </div>
+            <div class="input-row">
+                <label for="article_content">内容</label>
+                <textarea id="article_content"></textarea>
+            </div>
+            <div class="input-row">
+                <label class="">分类(Category)</label>
+                <input type="radio" name="article-category" value="0" checked/><span>默认分类</span><span class="txt-gray mg-r-10">(a)</span>
+                <input type="radio" name="article-category" value="1"/><span>技术</span><span class="txt-gray mg-r-10">(tech)</span>
+                <input type="radio" name="article-category" value="2"/><span>生活</span><span class="txt-gray mg-r-10">(life)</span>
+                <input type="radio" name="article-category" value="3"/><span>娱乐</span><span class="txt-gray mg-r-10">(fun)</span>
+                <input type="radio" name="article-category" value=""/><span>创建新分类</span>
+                <div><input type="text" id="article_new_tag" class="input-text-12" placeholder="分类名称"/></div>
+                <div><input type="text" id="article_new_tag_alias" class="input-text-12" placeholder="分类别名"/></div>
+            </div>
+            <div class="input-row">
+                <label class="" for="article_title">标签(Tag)</label>
+                <input type="text" id="article_tag" class="" />
+            </div>
+            <div class="input-row">
+                <label class="" for="article_key">关键字(Key)</label>
+                <input type="text" id="article_key" class="" />
+                <div class="txt-gray">用于文章的HTML文件的meta(keywords)数据</div>
+            </div>
+            <div class="input-row">
+                <label class="" for="article_desc">描述(Description)</label>
+                <textarea id="article_desc" class="textarea-height-fixed"></textarea>
+                <div class="txt-gray">用于文章的HTML文件的meta(description)数据</div>
+            </div>
+            <button type="button">仅保存</button><button type="button">发布</button><button type="button">同步</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
