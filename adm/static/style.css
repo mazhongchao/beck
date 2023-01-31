@@ -220,3 +220,38 @@ button{
 button:hover{
     background: #04699b;
 }
+.md-editor-panel {
+    position: relative;
+    float: left;
+    width: 99.8%;
+    min-height: 300px;
+    background: #fbfbfb;
+    border: 1px solid #cdcdcd;
+}
+#md_editor{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+}
+.md-editor {
+    float: left;
+    width: 50%;
+    min-height: 300px;
+
+    padding: 5px;
+}
+.md-preview {
+    float: right;
+    width: 49.1%;
+    min-height: 300px;
+
+    padding: 5px;
+    border-left: 1px solid #cdcdcd;
+}
+.epr {
+    border: 1px solid #cdcdcd;
+    border-left: none;
+}
+

@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="/static/style.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/ace-builds@1.15.0/css/ace.min.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -38,9 +39,13 @@
             </div>
             <div class="input-row">
                 <label for="article_content">内容</label>
-                编辑格式：<input type="radio" name="content-type" value="md" checked/><span>Markdown</span>
-                <input type="radio" name="content-type" value="html"/><span>富文本</span>
-                <textarea id="article_content"></textarea>
+                <div>编辑格式：<input type="radio" name="content-type" value="md" checked/><span>Markdown</span><input type="radio" name="content-type" value="html"/><span>富文本</span></div>
+
+                <div id="md_editor_panel" class="md-editor-panel">
+                    <div id="md_editor" class="md-editor"></div>
+                    <div id="md_preview" class="md-preview">Preview</div>
+                </div>
+                <textarea id="article_content" style="display: none;"></textarea>
             </div>
             <div class="input-row">
                 <label class="">分类(Category)</label>
@@ -70,6 +75,14 @@
         </form>
     </div>
 </div>
-
+<script src="/static/js/vendor/ace-builds-1.5.0/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<script>
+    document.getElementById('md_preview').innerHTML =
+        marked.parse('# Marked in browser\n\nRendered by **marked**.');
+    let editor = ace.edit("md_editor");
+    editor.setTheme("ace/theme/tomorrow");
+    editor.session.setMode("ace/mode/markdown");
+</script>
 </body>
 </html>
