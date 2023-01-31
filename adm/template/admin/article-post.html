@@ -4,6 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="/static/style.css" rel="stylesheet" type="text/css" />
+    <!--<link href="/statis/js/main.js" rel="stylesheet" type="text/css" />-->
     <link href="https://cdn.jsdelivr.net/npm/ace-builds@1.15.0/css/ace.min.css" rel="stylesheet" />
 </head>
 
@@ -83,6 +84,13 @@
     let editor = ace.edit("md_editor");
     editor.setTheme("ace/theme/tomorrow");
     editor.session.setMode("ace/mode/markdown");
+
+    let mdPreview = document.getElementById('md_preview');
+    console.log(mdPreview);
+    editor.addEventListener('input', function () {
+        console.log("input");
+        mdPreview.innerHTML = marked.parse(editor.getValue());
+    })
 </script>
 </body>
 </html>
