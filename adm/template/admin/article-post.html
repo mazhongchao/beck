@@ -4,7 +4,8 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="/static/style.css" rel="stylesheet" type="text/css" />
-    <!--<link href="/statis/js/main.js" rel="stylesheet" type="text/css" />-->
+    <link href="/static/js/main.js" rel="stylesheet" type="text/css" />
+<!--    <link href="/static/js/bk-article.js" rel="stylesheet" type="text/css" />-->
     <link href="https://cdn.jsdelivr.net/npm/ace-builds@1.15.0/css/ace.min.css" rel="stylesheet" />
 </head>
 
@@ -49,14 +50,16 @@
                 <textarea id="article_content" style="display: none;"></textarea>
             </div>
             <div class="input-row">
-                <label class="">分类(Category)</label>
-                <input type="radio" name="article-category" value="0" checked/><span>默认分类</span><span class="txt-gray mg-r-10">(a)</span>
-                <input type="radio" name="article-category" value="1"/><span>技术</span><span class="txt-gray mg-r-10">(tech)</span>
-                <input type="radio" name="article-category" value="2"/><span>生活</span><span class="txt-gray mg-r-10">(life)</span>
-                <input type="radio" name="article-category" value="3"/><span>娱乐</span><span class="txt-gray mg-r-10">(fun)</span>
-                <input type="radio" name="article-category" value=""/><span>创建新分类</span>
-                <div><input type="text" id="article_new_tag" class="input-text-12" placeholder="分类名称" disabled/></div>
-                <div><input type="text" id="article_new_tag_alias" class="input-text-12" placeholder="分类别名" disabled/></div>
+                <label class="">栏目(Category)</label>
+                <div id="cate_list">
+                <input type="radio" name="article-category" value="0" checked /><span>默认分类</span><span class="txt-gray mg-r-10">(a)</span>
+                <input type="radio" name="article-category" value="1" /><span>技术</span><span class="txt-gray mg-r-10">(tech)</span>
+                <input type="radio" name="article-category" value="2" /><span>生活</span><span class="txt-gray mg-r-10">(life)</span>
+                <input type="radio" name="article-category" value="3" /><span>娱乐</span><span class="txt-gray mg-r-10">(fun)</span>
+                </div>
+                <input type="radio" name="article-category" value="" id="create_new_cate" /><span>创建新栏目</span>
+                <div><input type="text" id="new_cate" class="input-text-12" placeholder="栏目名称" disabled/></div>
+                <div><input type="text" id="new_cate_alias" class="input-text-12" placeholder="栏目别名" disabled/></div>
             </div>
             <div class="input-row">
                 <label class="" for="article_title">标签(Tag)</label>
@@ -76,6 +79,7 @@
         </form>
     </div>
 </div>
+<script src="/static/js/main.js"></script>
 <script src="/static/js/vendor/ace-builds-1.5.0/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
@@ -90,7 +94,25 @@
     editor.addEventListener('input', function () {
         console.log("input");
         mdPreview.innerHTML = marked.parse(editor.getValue());
+    });
+
+    let cateList = beck.get('cate_list');
+    cateList.addEventListener('click', function (evt) {
+        let cate_name = beck.get('new_cate');
+        let cate_alias = beck.get('new_cate_alias');
+        if (cate_name.hasAttribute('disabled') === false) {
+            cate_name.disabled = true;
+            cate_alias.disabled = true;
+        }
     })
+
+    let newCate = beck.get('create_new_cate');
+    newCate.addEventListener('click', function () {
+        let cate_name = beck.get('new_cate');
+        let cate_alias = beck.get('new_cate_alias');
+        cate_name.removeAttribute('disabled');
+        cate_alias.removeAttribute('disabled');
+    });
 </script>
 </body>
 </html>
