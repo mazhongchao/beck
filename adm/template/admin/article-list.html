@@ -19,7 +19,7 @@
     </ul>
     <div class="logout"><a href="/logout.php">退出登录</a></div>
     <ul class="sub-nav">
-        <li><a class="selected" href="/article-list.php">文章</a></li>
+        <li><a class="selected-sub-nav" href="/article-list.php">文章</a></li>
         <li><a href="/page-list.php">页面</a></li>
         <li><a href="">首页</a></li>
     </ul>
@@ -27,7 +27,7 @@
 
 <div class="main-content">
     <div class="content-block">
-        <button type="button" class="disabled">批量发布</button><button type="button" class="disabled">批量删除</button>
+        <button type="button" class="btn-default">批量发布</button><button type="button" class="btn-default">批量删除</button>
         <table id="article_list">
             <caption>文章列表</caption>
             <thead>
@@ -92,7 +92,7 @@
         <div>
             <ul class="pagination"><li><a class="disable">首页</a></li><li><a href="#">前一页</a> </li><li><a href="#">1</a></li><li><a href="#">2</a></li><li><a class="current-page">3</a></li><li>...</li><a href="#">7</a><li><a href="#">8</a></li><li><a href="#">100</a></li><li><a href="#">后一页</a></li><li><a href="#">末页</a> </li></ul>
             每页显示：<select class="w6"><option value="10">10</option><option value="30" selected>30</option><option value="60">60</option><option value="100">100</option></select>条记录
-            转到第<input type="text" name="goto-page" class="w3 pd2"/>页
+            转到第<input type="text" name="goto-page" class="input-text w3 pd2"/>页
         </div>
     </div>
 </div>
