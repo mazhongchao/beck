@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Beck Index</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link href="/static/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+<div class="header">
+    <div class="logo">BECK</div>
+    <ul class="main-nav">
+        <li><a href="/article_list.php">内容</a></li>
+        <li><a href="/article_list.php">分类</a></li>
+        <li><a href="/theme.php">外观</a></li>
+        <li><span class="current-menu">设置</span></li>
+    </ul>
+    <div class="logout"><a href="/logout.php">退出登录</a></div>
+    <ul class="sub-nav">
+        <li><a class="selected-sub-nav" href="/setting-site.php">站点</a></li>
+        <li><a href="/setting-publish.php">发布</a></li>
+        <li><a href="/setting-system.php">系统</a></li>
+    </ul>
+</div>
+
+<div class="main-content">
+    <div class="content-block">
+        <form class="">
+            <div class="input-row">
+                <label class="" for="site_name">站点名称</label>
+                <input type="text" id="site_name" class="input-text" />
+            </div>
+            <div class="input-row">
+                <label class="" for="site_keywords">站点关键字</label>
+                <input type="text" id="site_keywords" class="input-text" />
+            </div>
+            <div class="input-row">
+                <label class="" for="site_description">站点描述</label>
+                <input type="text" id="site_description" class="input-text" />
+            </div>
+            <button type="button" class="btn-default">保存</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
