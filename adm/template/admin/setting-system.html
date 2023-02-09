@@ -20,8 +20,8 @@
     <div class="logout"><a href="/logout.php">退出登录</a></div>
     <ul class="sub-nav">
         <li><a href="/setting-site.php">站点</a></li>
-        <li><a class="selected-sub-nav" href="/setting-publish.php">发布</a></li>
-        <li><a href="/setting-system.php">系统</a></li>
+        <li><a href="/setting-publish.php">发布</a></li>
+        <li><a class="selected-sub-nav" href="/setting-system.php">系统</a></li>
     </ul>
 </div>
 
@@ -29,16 +29,17 @@
     <div class="content-block">
         <form class="">
             <div class="input-row">
-                <label class="" for="site_name">站点名称</label>
-                <input type="text" id="site_name" class="input-text" />
+                <label class="">默认编辑器</label>
+                <input type="radio" name="editor-type" value="0" checked /><span>Markdown</span>
+                <input type="radio" name="editor-type" value="1" /><span>WYSIWYG</span>
             </div>
             <div class="input-row">
-                <label class="" for="site_keywords">站点关键字</label>
-                <input type="text" id="site_keywords" class="input-text" />
+                <label class="" for="old_password">旧密码</label>
+                <input type="text" id="old_password" class="input-text" />
             </div>
             <div class="input-row">
-                <label class="" for="site_description">站点描述</label>
-                <input type="text" id="site_description" class="input-text" />
+                <label class="" for="new_password">新密码</label>
+                <input type="text" id="new_password" class="input-text" />
             </div>
             <button type="button" class="btn-default">保存</button>
         </form>
