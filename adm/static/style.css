@@ -47,6 +47,8 @@ a.op-delete:hover{color: #b72c02;}
 a.article-lnk{color: #5495ff;}
 a.article-lnk:hover{color: #007cba;}
 
+.theme-thumb {float: left; width: 30px; height: 30px; border:1px solid #eeeeee;}
+
 .txt-green{color: #13a403;}
 .txt-gray {color: #999999;}
 .txt-center{text-align: center}
