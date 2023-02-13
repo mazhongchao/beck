@@ -5,7 +5,7 @@ a {text-decoration-line: none;display: block;}
 input{font-size: 100%;font-family: inherit;}
 label{width:100%;margin-bottom: 5px;background: whitesmoke;display: inline-block;}
 input:focus{outline:none;border: 1px solid #409eff;}
-input[type=radio] {width: 2%;}
+/*input[type=radio] {width: 2%;}*/
 select{width: 10%;height: 30px;margin: inherit;border:1px solid #ddd;border-radius: 4px;font-size: inherit}
 textarea{width: 100%;min-height: 180px;margin-top:3px;margin-bottom: 10px;padding:6px 6px;border:1px solid #ddd;border-radius: 4px;outline:none;font-family: inherit;}
 textarea:focus{outline:none;border: 1px solid #409eff;}
@@ -36,6 +36,7 @@ tbody tr:hover {background-color: #d9e9ff;}
 
 .main-content{float:left;width:100%;margin-top:118px; background-color: #efefef;}
 .content-block{float:left; width: 88%; margin:20px 3%; padding: 10px 3%;background: #fff; border-radius: 5px;}
+.item-radio {width: 2%;}
 
 .td-ops{padding-left: 18px; line-height: 10px;}
 a.op-edit{float: left; display: inline-block; margin-right:5px; color: #5495ff;}

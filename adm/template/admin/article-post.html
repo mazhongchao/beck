@@ -43,8 +43,8 @@
             </div>
             <div class="input-row">
                 <label for="article_content">内容</label>
-                <div id="editor_type">方式：<input type="radio" name="content-type" value="md" checked/><span>Markdown</span>
-                    <input type="radio" name="content-type" value="html"/><span>富文本</span></div>
+                <div id="editor_type">方式：<input type="radio" name="content-type" value="md" checked class="item-radio" /><span>Markdown</span>
+                    <input type="radio" name="content-type" value="html" class="item-radio" /><span>富文本</span></div>
                 <div id="md_editor_panel" class="md-editor-panel">
                     <div id="md_editor" class="md-editor"></div>
                     <div id="md_preview" class="md-preview">Preview</div>
@@ -104,12 +104,12 @@
             <div class="input-row">
                 <label class="">栏目(Category)</label>
                 <div id="cate_list">
-                <input type="radio" name="article-category" value="0" checked /><span>默认分类</span><span class="txt-gray mg-r-10px">(a)</span>
-                <input type="radio" name="article-category" value="1" /><span>技术</span><span class="txt-gray mg-r-10px">(tech)</span>
-                <input type="radio" name="article-category" value="2" /><span>生活</span><span class="txt-gray mg-r-10px">(life)</span>
-                <input type="radio" name="article-category" value="3" /><span>娱乐</span><span class="txt-gray mg-r-10px">(fun)</span>
+                <input type="radio" name="article-category" value="0" checked class="item-radio" /><span>默认分类</span><span class="txt-gray mg-r-10px">(a)</span>
+                <input type="radio" name="article-category" value="1" class="item-radio" /><span>技术</span><span class="txt-gray mg-r-10px">(tech)</span>
+                <input type="radio" name="article-category" value="2" class="item-radio" /><span>生活</span><span class="txt-gray mg-r-10px">(life)</span>
+                <input type="radio" name="article-category" value="3" class="item-radio" /><span>娱乐</span><span class="txt-gray mg-r-10px">(fun)</span>
                 </div>
-                <input type="radio" name="article-category" value="" id="create_new_cate" /><span>创建新栏目</span>
+                <input type="radio" name="article-category" value="" id="create_new_cate" class="item-radio" /><span>创建新栏目</span>
                 <div><input type="text" id="new_cate" class="input-text input-text-short f-left" placeholder="栏目名称" disabled/></div>
                 <div><input type="text" id="new_cate_alias" class="input-text input-text-short f-left" placeholder="栏目别名" disabled/></div>
             </div>
