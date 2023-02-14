@@ -33,17 +33,17 @@
     <div class="content-block">
         <form class="">
             <div class="input-row">
-                <label class="" for="article_title">标题</label>
+                <label class="input-item-name" for="article_title">标题</label>
                 <input type="text" id="article_title" class="input-text" />
             </div>
             <div class="input-row">
-                <label class="" for="article_title">别名</label>
+                <label class="input-item-name" for="article_title">别名</label>
                 <input type="text" id="article_alias" class="input-text" />
                 <div class="txt-gray">用作保存文章的HTML的文件名，只能是小写字母、数字、连字符(-)和下划线(_)</div>
             </div>
             <div class="input-row">
-                <label for="article_content">内容</label>
-                <div id="editor_type">方式：<input type="radio" name="content-type" value="md" checked class="item-radio" /><span>Markdown</span>
+                <label for="article_content" class="input-item-name">内容</label>
+                <div id="editor_type"><input type="radio" name="content-type" value="md" checked class="item-radio" /><span>Markdown</span>
                     <input type="radio" name="content-type" value="html" class="item-radio" /><span>富文本</span></div>
                 <div id="md_editor_panel" class="md-editor-panel">
                     <div id="md_editor" class="md-editor"></div>
@@ -102,9 +102,9 @@
                 <textarea id="article_content" style="display: none;"></textarea>
             </div>
             <div class="input-row">
-                <label class="">栏目(Category)</label>
+                <label class="input-item-name">栏目(Column)</label>
                 <div id="cate_list">
-                <input type="radio" name="article-category" value="0" checked class="item-radio" /><span>默认分类</span><span class="txt-gray mg-r-10px">(a)</span>
+                <input type="radio" name="article-category" value="0" checked class="item-radio" /><span>默认栏目</span><span class="txt-gray mg-r-10px">(a)</span>
                 <input type="radio" name="article-category" value="1" class="item-radio" /><span>技术</span><span class="txt-gray mg-r-10px">(tech)</span>
                 <input type="radio" name="article-category" value="2" class="item-radio" /><span>生活</span><span class="txt-gray mg-r-10px">(life)</span>
                 <input type="radio" name="article-category" value="3" class="item-radio" /><span>娱乐</span><span class="txt-gray mg-r-10px">(fun)</span>
@@ -114,16 +114,17 @@
                 <div><input type="text" id="new_cate_alias" class="input-text input-text-short f-left" placeholder="栏目别名" disabled/></div>
             </div>
             <div class="input-row">
-                <label class="" for="article_title">标签(Tag)</label>
+                <label class="input-item-name" for="article_title">标签(Tag)</label>
                 <input type="text" id="article_tag" class="input-text" />
+                <div class="txt-gray">多个标签用空格分隔</div>
             </div>
             <div class="input-row">
-                <label class="" for="article_key">关键字(Key)</label>
+                <label class="input-item-name" for="article_key">关键字(Keywords)</label>
                 <input type="text" id="article_key" class="input-text" />
                 <div class="txt-gray">用于文章的HTML文件的meta(keywords)数据</div>
             </div>
             <div class="input-row">
-                <label class="" for="article_desc">描述(Description)</label>
+                <label class="input-item-name" for="article_desc">描述(Description)</label>
                 <textarea id="article_desc" class="textarea-height-fixed"></textarea>
                 <div class="txt-gray">用于文章的HTML文件的meta(description)数据</div>
             </div>
