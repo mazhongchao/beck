@@ -57,6 +57,7 @@ a.article-lnk:hover{color: #007cba;}
 .txt-left{text-align: left;}
 .txt-right{text-align: right;}
 .txt-justify{text-align: justify}
+.txt-small{font-size: 0.8em}
 
 /* 85% */
 .th-checkbox{width: 3%;}
