@@ -17,13 +17,16 @@ const beck = {};
             return eventHandler;
         }
     };
-    beck.onClick = function (el, callback = ()=>{beckjs.echo('click event')}) {
-        el.addEventListener('click', callback());
-    };
     beck.get = function (id){
         return document.getElementById(id);
     };
+    beck.getByName = function (name) {
+        return document.getElementsByName(name);
+    }
     beck.getByClass = function (className) {
         return document.getElementsByClassName(className);
+    }
+    beck.getByTag = function (TagName) {
+        return document.getElementsByTagName(TagName);
     }
 })();
