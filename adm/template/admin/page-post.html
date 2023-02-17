@@ -29,16 +29,16 @@
     <div class="content-block">
         <form class="">
             <div class="input-row">
-                <label class="input-item-name" for="article_title">标题</label>
+                <label class="input-item-name" for="article_title">标题 *</label>
                 <input type="text" id="article_title" class="input-text" />
             </div>
             <div class="input-row">
                 <label class="input-item-name" for="article_title">别名</label>
                 <input type="text" id="article_alias" class="input-text" />
-                <div class="txt-gray txt-small">用作保存文章的HTML的文件名，只能是小写字母、数字、连字符(-)和下划线(_)</div>
+                <div class="txt-gray txt-small">用作保存文章的HTML的文件名，只能是小写字母、数字、连字符(-)和下划线(_), 不填写将使用页面ID</div>
             </div>
             <div class="input-row">
-                <label class="input-item-name" for="article_content">内容</label>
+                <label class="input-item-name" for="article_content">内容 *</label>
                 编辑格式：<input type="radio" name="content-type" value="md" checked class="item-radio" /><span>Markdown</span>
                 <input type="radio" name="content-type" value="html" class="item-radio" /><span>富文本</span>
                 <textarea id="article_content"></textarea>
@@ -53,10 +53,35 @@
                 <textarea id="article_desc" class="textarea-height-fixed"></textarea>
                 <div class="txt-gray txt-small">用于页面的HTML文件的meta(description)数据</div>
             </div>
-            <button type="button" class="btn-default">仅保存</button><button type="button" class="btn-default">发布</button>
+            <div class="input-row">
+                <label class="input-item-name">其他</label>
+                <div>作为栏目首页<input type="checkbox" id="as_index_page" name="as-index-page"></div>
+                <div id="cate_list" style="display: none">
+                    <input type="radio" name="article-category" value="0" class="item-radio" /><span>默认栏目</span><span class="txt-gray mg-r-10px">(a)</span>
+                    <input type="radio" name="article-category" value="1" class="item-radio" /><span>技术</span><span class="txt-gray mg-r-10px">(tech)</span>
+                    <input type="radio" name="article-category" value="2" class="item-radio" /><span>生活</span><span class="txt-gray mg-r-10px">(life)</span>
+                    <input type="radio" name="article-category" value="3" class="item-radio" /><span>娱乐</span><span class="txt-gray mg-r-10px">(fun)</span>
+                </div>
+            </div>
+            <button type="button" class="btn btn-default">仅保存</button><button type="button" class="btn btn-default">预览</button><button type="button" class="btn btn-default">发布</button>
         </form>
     </div>
 </div>
-
+<script src="/static/js/main.js"></script>
+<script type="text/javascript">
+    let cateList = beck.get('cate_list');
+    let asIndex = beck.get('as_index_page');
+    asIndex.addEventListener('click', function () {
+        if (asIndex.checked == true) {
+            cateList.style.display = "";
+        } else {
+            cateList.style.display = "none";
+            let category = beck.getByName('article-category');
+            for (let i = 0; i < category.length; i++) {
+                category[i].checked = false;
+            }
+        }
+    });
+</script>
 </body>
 </html>
