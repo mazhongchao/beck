@@ -5,6 +5,10 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link href="/static/style.css" rel="stylesheet" type="text/css" />
+    <link href="https://cdn.jsdelivr.net/npm/ace-builds@1.15.2/css/ace.min.css" rel="stylesheet" />
+    <link href="https://cdn.bootcdn.net/ajax/libs/quill/1.3.7/quill.snow.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.16.4/katex.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.7.0/styles/github-dark.min.css" rel="stylesheet">
 </head>
 
 <body>
@@ -28,34 +32,88 @@
 <div class="main-content">
     <div class="content-block">
         <form class="">
-            <div class="input-row">
+            <div class="input-row f-left w-49p mg-b-1px">
                 <label class="input-item-name" for="article_title">标题 *</label>
                 <input type="text" id="article_title" class="input-text" />
             </div>
-            <div class="input-row">
+            <div class="input-row f-right w-49p mg-b-1px">
                 <label class="input-item-name" for="article_title">别名</label>
                 <input type="text" id="article_alias" class="input-text" />
                 <div class="txt-gray txt-small">用作保存文章的HTML的文件名，只能是小写字母、数字、连字符(-)和下划线(_), 不填写将使用页面ID</div>
             </div>
-            <div class="input-row">
+            <div class="input-row f-left w-100p">
                 <label class="input-item-name" for="article_content">内容 *</label>
                 <div id="editor_type">编辑器
-                <input type="radio" name="content-type" value="md" checked class="item-radio" /><span>Markdown</span>
+                    <input type="radio" name="content-type" value="md" checked class="item-radio" /><span>Markdown</span>
                     <input type="radio" name="content-type" value="html" class="item-radio" /><span>富文本</span>
                 </div>
-                <textarea id="article_content"></textarea>
+                <div id="md_editor_panel" class="md-editor-panel">
+                    <div id="md_editor" class="md-editor"></div>
+                    <div id="md_preview" class="md-preview">Preview</div>
+                </div>
+                <div id="html_toolbar" style="display: none;">
+                    <span class="ql-formats">
+                      <select class="ql-font"></select>
+                      <select class="ql-header"></select>
+                    </span>
+                    <span class="ql-formats">
+                      <button class="ql-bold"></button>
+                      <button class="ql-italic"></button>
+                      <button class="ql-underline"></button>
+                      <button class="ql-strike"></button>
+                    </span>
+                    <span class="ql-formats">
+                      <select class="ql-color"></select>
+                      <select class="ql-background"></select>
+                    </span>
+                    <span class="ql-formats">
+                      <button class="ql-script" value="sub"></button>
+                      <button class="ql-script" value="super"></button>
+                    </span>
+                    <span class="ql-formats">
+                      <button class="ql-header" value="1"></button>
+                      <button class="ql-header" value="2"></button>
+                      <button class="ql-blockquote"></button>
+                      <button class="ql-code-block"></button>
+                    </span>
+                    <span class="ql-formats">
+                      <button class="ql-list" value="ordered"></button>
+                      <button class="ql-list" value="bullet"></button>
+                      <button class="ql-indent" value="-1"></button>
+                      <button class="ql-indent" value="+1"></button>
+                    </span>
+                    <span class="ql-formats">
+                      <button class="ql-direction" value="rtl"></button>
+                      <select class="ql-align"></select>
+                    </span>
+                    <span class="ql-formats">
+                      <button class="ql-link"></button>
+                      <button class="ql-image"></button>
+                      <button class="ql-video"></button>
+                      <button class="ql-formula"></button>
+                    </span>
+                    <span class="ql-formats">
+                      <button class="ql-clean"></button>
+                    </span>
+                </div>
+                <div id="html_editor" style="display: none;" class="html-editor">
+                    <p>Hello World!</p>
+                    <p>Some initial <strong>bold</strong> text</p>
+                    <p><br></p>
+                </div>
+                <textarea id="article_content" style="display: none;"></textarea>
             </div>
-            <div class="input-row">
+            <div class="input-row f-left w-49p">
                 <label class="input-item-name" for="article_key">关键字(Keywords)</label>
                 <input type="text" id="article_key" class="input-text" />
                 <div class="txt-gray txt-small">用于页面的HTML文件的meta(keywords)数据</div>
             </div>
-            <div class="input-row">
+            <div class="input-row f-right w-49p">
                 <label class="input-item-name" for="article_desc">描述(Description)</label>
                 <textarea id="article_desc" class="textarea-height-fixed"></textarea>
                 <div class="txt-gray txt-small">用于页面的HTML文件的meta(description)数据</div>
             </div>
-            <div class="input-row">
+            <div class="input-row w-100p">
                 <label class="input-item-name">其他</label>
                 <div>作为栏目首页<input type="checkbox" id="as_index_page" name="as-index-page"></div>
                 <div id="cate_list" style="display: none">
@@ -65,12 +123,52 @@
                     <input type="radio" name="article-category" value="3" class="item-radio" /><span>娱乐</span><span class="txt-gray mg-r-10px">(fun)</span>
                 </div>
             </div>
-            <button type="button" class="btn btn-default">仅保存</button><button type="button" class="btn btn-default">预览</button><button type="button" class="btn btn-default">发布</button>
+            <button type="button" class="btn btn-default">预览</button><button type="button" class="btn btn-default">仅保存</button><button type="button" class="btn btn-default">发布</button>
         </form>
     </div>
 </div>
 <script src="/static/js/main.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/ace-builds@1.15.2/src-min-noconflict/ace.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/marked/4.2.12/marked.min.js" type="text/javascript"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.16.4/katex.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/quill/1.3.7/quill.min.js"></script>
+
 <script type="text/javascript">
+    document.getElementById('md_preview').innerHTML =
+        marked.parse('# Marked in browser\n\nRendered by **marked**.');
+    let editor = ace.edit("md_editor");
+    ace.config.set("basePath", "https://cdn.jsdelivr.net/npm/ace-builds@1.15.2/src-min-noconflict");
+    editor.setTheme("ace/theme/tomorrow");
+    editor.session.setMode("ace/mode/markdown");
+
+    let quill = new Quill('#html_editor', {
+        modules: {
+            formula: true,
+            syntax: true,
+            toolbar: '#html_toolbar'
+        },
+        theme: 'snow'
+    });
+
+    let editorType = beck.get('editor_type');
+    editorType.addEventListener('click', function (evt) {
+        if (evt.target.value == 'html') {
+            beck.get('html_editor').style.display="";
+            beck.get('html_toolbar').style.display="";
+            beck.get('md_editor_panel').style.display="none";
+        } else {
+            beck.get('html_editor').style.display="none";
+            beck.get('html_toolbar').style.display="none";
+            beck.get('md_editor_panel').style.display="";
+        }
+    });
+
+    let mdPreview = document.getElementById('md_preview');
+    editor.addEventListener('input', function () {
+        mdPreview.innerHTML = marked.parse(editor.getValue());
+    });
+
     let cateList = beck.get('cate_list');
     let asIndex = beck.get('as_index_page');
     asIndex.addEventListener('click', function () {
