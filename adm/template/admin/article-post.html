@@ -138,8 +138,9 @@
     </div>
 </div>
 <script src="/static/js/main.js"></script>
-<script src="/static/js/vendor/ace-builds-1.5.0/src-min-noconflict/ace.js" type="text/javascript"></script>
-<script src="/static/js/vendor/marked-4.2.12/marked.min.js" type="text/javascript"></script>
+<!--<script src="/static/js/vendor/ace-builds-1.5.0/src-min-noconflict/ace.js"></script>-->
+<script src="https://cdn.jsdelivr.net/npm/ace-builds@1.15.2/src-min-noconflict/ace.min.js"></script>
+<script src="https://cdn.bootcdn.net/ajax/libs/marked/4.2.12/marked.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/KaTeX/0.16.4/katex.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/quill/1.3.7/quill.min.js"></script>
@@ -148,6 +149,7 @@
     document.getElementById('md_preview').innerHTML =
         marked.parse('# Marked in browser\n\nRendered by **marked**.');
     let editor = ace.edit("md_editor");
+    ace.config.set("basePath", "https://cdn.jsdelivr.net/npm/ace-builds@1.15.2/src-min-noconflict");
     editor.setTheme("ace/theme/tomorrow");
     editor.session.setMode("ace/mode/markdown");
 
