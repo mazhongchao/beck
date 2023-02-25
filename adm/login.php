@@ -2,7 +2,7 @@
 require 'base.php';
 
 if (isset($_SESSION['bk_sess'])) {
-    header("Location: ./dashboard.php");
+    header("Location: ./article.php");
     return;
 }
 
