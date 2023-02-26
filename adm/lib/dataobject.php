@@ -59,7 +59,8 @@ class DataObject
         }
         return null;
     }
-    public static function article_list($page=1, $page_size=30, $filter=null) {
+    public static function articles($page=1, $page_size=30, $filter=null): array
+    {
         $start = ($page - 1) * $page_size;
         $rows = $page_size;
 
