@@ -137,7 +137,6 @@ a.article-lnk:hover{color: #007cba;}
 }
 
 .btn {
-    float: left;
     min-width: 4em;
     width:auto;
     padding:4px 6px;
