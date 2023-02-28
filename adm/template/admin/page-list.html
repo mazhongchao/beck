@@ -29,7 +29,7 @@
         <div class="block-title">文章列表</div>
         <div class="input-row f-left"><button type="button" class="btn btn-default">创建新页面</button><button type="button" class="btn btn-default">批量发布</button><button type="button" class="btn btn-default">批量删除</button></div>
         <div>
-            <table id="page_list">
+            <table id="list_table">
                 <thead>
                 <tr>
                     <th scope="col" class="th-checkbox"><input type="checkbox" name="check-all" id="check_all"></th>
@@ -92,20 +92,5 @@
     </div>
 </div>
 <script src="/static/js/main.js"></script>
-<script type="text/javascript">
-    let checkAll = beck.get('check_all');
-    let checkList = beck.getByName('check-item');
-    checkAll.addEventListener('click', function () {
-        if (checkAll.checked == false) {
-            for (let i = 0; i < checkList.length; i++) {
-                checkList[i].checked = false;
-            }
-        } else {
-            for (let i = 0; i < checkList.length; i++) {
-                checkList[i].checked = true;
-            }
-        }
-    });
-</script>
 </body>
 </html>

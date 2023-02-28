@@ -29,7 +29,7 @@
         <div class="block-title">文章列表</div>
         <div class="input-row f-left"><button type="button" class="btn btn-default">写新文章</button><button type="button" class="btn btn-default">批量发布</button><button type="button" class="btn btn-default">批量删除</button></div>
         <div>
-            <table id="article_list">
+            <table id="list_table">
                 <thead>
                 <tr>
                     <th scope="col" class="th-checkbox"><input type="checkbox" name="check-all" id="check_all"></th>
@@ -98,44 +98,44 @@
     </div>
 </div>
 <script src="/static/js/main.js"></script>
-<script type="text/javascript">
-    let checkCount = 0;
-    let listTable = beck.get('article_list');
-    let checkAll = beck.get('check_all');
-    let checkList = beck.getByName('check-item');
-    checkAll.addEventListener('click', function () {
-        if (checkAll.checked == false) {
-            for (let i = 0; i < checkList.length; i++) {
-                checkList[i].checked = false;
-                checkList[i].parentNode.parentNode.style.background='';
-            }
-        } else {
-            for (let i = 0; i < checkList.length; i++) {
-                checkList[i].checked = true;
-                checkList[i].parentNode.parentNode.style.background='#fdf6e3';
-            }
-        }
-    });
-    listTable.addEventListener('click', function (evt) {
-        let el = evt.target;
-        if (el.name=='check-item' ) {
-            if (el.checked == true) {
-                // el.parentNode.parentNode.classList.add('checked');
-                el.parentNode.parentNode.style.background='#fdf6e3';
-                checkCount++;
-            } else {
-                el.parentNode.parentNode.style.background='';
-                checkCount--;
-            }
-            console.log(checkCount);
-            if (checkCount == checkList.length) {
-                checkAll.checked = true;
-            }
-            if (checkCount == 0) {
-                checkAll.checked = false;
-            }
-        }
-    });
-</script>
+<!--<script type="text/javascript">-->
+<!--    let checkCount = 0;-->
+<!--    let listTable = beck.get('list_table');-->
+<!--    let checkAll = beck.get('check_all');-->
+<!--    let checkList = beck.getByName('check-item');-->
+<!--    checkAll.addEventListener('click', function () {-->
+<!--        if (checkAll.checked == false) {-->
+<!--            for (let i = 0; i < checkList.length; i++) {-->
+<!--                checkList[i].checked = false;-->
+<!--                checkList[i].parentNode.parentNode.style.background='';-->
+<!--            }-->
+<!--        } else {-->
+<!--            for (let i = 0; i < checkList.length; i++) {-->
+<!--                checkList[i].checked = true;-->
+<!--                checkList[i].parentNode.parentNode.style.background='#fdf6e3';-->
+<!--            }-->
+<!--        }-->
+<!--    });-->
+<!--    listTable.addEventListener('click', function (evt) {-->
+<!--        let el = evt.target;-->
+<!--        if (el.name=='check-item' ) {-->
+<!--            if (el.checked == true) {-->
+<!--                // el.parentNode.parentNode.classList.add('checked');-->
+<!--                el.parentNode.parentNode.style.background='#fdf6e3';-->
+<!--                checkCount++;-->
+<!--            } else {-->
+<!--                el.parentNode.parentNode.style.background='';-->
+<!--                checkCount&#45;&#45;;-->
+<!--            }-->
+<!--            console.log(checkCount);-->
+<!--            if (checkCount == checkList.length) {-->
+<!--                checkAll.checked = true;-->
+<!--            }-->
+<!--            if (checkCount == 0) {-->
+<!--                checkAll.checked = false;-->
+<!--            }-->
+<!--        }-->
+<!--    });-->
+<!--</script>-->
 </body>
 </html>
