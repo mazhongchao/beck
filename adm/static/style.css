@@ -33,7 +33,7 @@ tbody tr:hover {background-color: #d9e9ff}
 .logout a{text-decoration: none; color: #777777;}
 .logout a:hover{color: #4f5350;}
 
-.main-content{float:left;width:100%;margin-top:110px; background-color: #efefef;}
+.main-content{float:left;width:100%;margin-top:110px; min-height: 600px; background-color: #efefef;}
 .content-block{float:left; width: 88%; margin:20px 3%; padding: 10px 3%;background: #fff; border-radius: 5px;}
 .block-title{float: left; width: 100%; margin: 5px auto; color: teal; font-size: 1.2em; font-weight: bold;}
 .item-radio {width: 2%;}
