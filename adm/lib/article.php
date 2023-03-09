@@ -37,7 +37,8 @@ class Article
         $rows = $page_size;
 
         $limit = "{$start},{$rows}";
-        $res = self::query("bk_article", "*", $filter, null, "", "", "",
+
+        $res = DataObject::query("bk_article", "*", $filter, null, "", "", "",
             $limit);
 
         $list = [];
