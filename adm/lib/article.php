@@ -38,7 +38,9 @@ class Article
 
         $limit = "{$start},{$rows}";
 
-        $res = DataObject::query("bk_article", "*", $filter, null, "", "", "",
+        $data_object = new DataObject();
+        $data_object::setSource();;
+        $res = $data_object::query("bk_article", "*", $filter, null, "", "", "",
             $limit);
 
         $list = [];
