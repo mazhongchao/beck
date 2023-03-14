@@ -1,29 +1,31 @@
 <?php
-class DataObject
+class Database
 {
-    private static $source = '../data/beck.db';
-    private static $db = null;
+    private static string $source = DB_DIR.'/beck.db';
+    private static object $db;
 
-    public function __construct($source) {
-        //
-    }
-
-    public static function setSource($source) {
+    public static function setDb($source) {
         if (!empty($source)) {
             self::$source = $source;
         }
+        self::$db = new SQLite3(self::$source);
     }
 
-    public static function source() {
+    public static function getDb() {
         self::$db = new SQLite3(self::$source);
     }
 
     public static function rawQuery ($sql) {
+        if (!isset(self::$db)) {
+            self::getDb();
+        }
+
         if (!empty($sql) && is_string($sql)) {
             return self::$db->query($sql);
         }
         return null;
     }
+
     public static function query($tb, $cols="*", $cond=null, $cond_arg=null, $group_by="", $having="", $order_by="",
                                  $limit="") {
         if (!empty($tb) && is_string($tb) && !empty($cols) && is_string($cols)) {
