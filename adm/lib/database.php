@@ -1,33 +1,24 @@
 <?php
 class Database
 {
-    private static string $source = DB_DIR.'/beck.db';
     private static object $db;
 
-    public static function setDb($source) {
-        if (!empty($source)) {
-            self::$source = $source;
-        }
-        self::$db = new SQLite3(self::$source);
+    public function __construct($source =  DB_FILE)
+    {
+        self::$db = new SQLite3($source);
     }
 
-    public static function getDb() {
-        self::$db = new SQLite3(self::$source);
-    }
-
-    public static function rawQuery ($sql) {
-        if (!isset(self::$db)) {
-            self::getDb();
-        }
-
+    public function rawQuery($sql): bool|SQLite3Result|null
+    {
         if (!empty($sql) && is_string($sql)) {
             return self::$db->query($sql);
         }
         return null;
     }
 
-    public static function query($tb, $cols="*", $cond=null, $cond_arg=null, $group_by="", $having="", $order_by="",
-                                 $limit="") {
+    public function query($tb, $cols="*", $cond=null, $cond_arg=null, $group_by="", $having="", $order_by="",
+                                 $limit=""): bool|SQLite3Result|null
+    {
         if (!empty($tb) && is_string($tb) && !empty($cols) && is_string($cols)) {
             $where = "where 1=1";
             if (isset($cond) && is_array($cond)) {
@@ -49,16 +40,31 @@ class Database
             }
 
             if (!empty($group_by)) {
-                $sql .= " {$group_by}";
+                $sql .= " group by {$group_by}";
             }
             if (!empty($having)) {
-                $sql .= " {$having}";
+                $sql .= " having {$having}";
             }
             if (!empty($order_by)) {
-                $sql .= " {$order_by}";
+                $sql .= " order by {$order_by}";
             }
-            return self::$db->query($sql);
+            return self::rawQuery($sql);
         }
         return null;
+    }
+
+    public function save()
+    {
+        //
+    }
+
+    public function delete()
+    {
+        //
+    }
+
+    public function update()
+    {
+        //
     }
 }

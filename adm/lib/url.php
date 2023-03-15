@@ -2,8 +2,7 @@
 class Url
 {
     public static function queryData(): array {
-        //$query_data = ['page'=>1, 'per_page'=>30, 'filter'=>null];
-        $query_data = [];
+        $query_data = ['page'=>1, 'per_page'=>30, 'filter'=>null];
 
         if (isset($_REQUEST['page'])) {
             $query_data['page'] = $_REQUEST['page'];
