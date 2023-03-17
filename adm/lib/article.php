@@ -31,7 +31,7 @@ class Article
         //
     }
 
-    public static function show($page=1, $page_size=30, $filter=null): array
+    public static function list($page=1, $page_size=30, $filter=null): array
     {
         $start = ($page - 1) * $page_size;
         $rows = $page_size;
