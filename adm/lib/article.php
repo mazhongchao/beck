@@ -44,7 +44,7 @@ class Article
 
         $list = [];
         while ($row = $res->fetchArray()) {
-            array_push($list, $row);
+            $list[] = $row;
         }
         return $list;
     }
