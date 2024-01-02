@@ -6,11 +6,11 @@ Beck is a very small system written in PHP for generating static web pages.
 
 The directory `adm` is the entrance to the management system.
 The directory `public` can be used as a directory to store static pages of your website.
-You can also set the `beck` directory in the `Beck` system as the storage directory, 
+You can also set the `beck` root directory in the `Beck` system as the storage directory, 
 or set any location, as long as the `Beck` system has read/write permission to the location.
 
 ```
-|-- beck                         # beck
+|-- beck                         # beck's root
     |-- adm                      # admin's root
     |   |-- lib/
     |   |-- data/
