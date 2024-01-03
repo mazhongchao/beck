@@ -13,7 +13,7 @@ if (isset($_POST['login_acc']) && isset($_POST['login_pwd'])) {
     $login_pwd = trim($_POST['login_pwd']);
 
     $ret = Auth::verifyUser($login_acc, $login_pwd);
-    if ($ret == true) {
+    if ($ret) {
         var_dump(Auth::initStatus($login_acc));
         if (Auth::initStatus($login_acc)) {
             $view->assign(['login_acc' => $login_acc]);
