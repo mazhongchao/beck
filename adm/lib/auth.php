@@ -3,7 +3,8 @@ class Auth
 {
     public static function verifyUser($login_acc, $login_pwd): bool
     {
-        $db = new SQLite3(DB_DIR.'beck.db');
+        // $db = new SQLite3(DB_DIR.'beck.db');
+        $db = new SQLite3(DB_FILE);
         $password_hash = $db->querySingle("SELECT login_pwd FROM bk_user WHERE login_acc='{$login_acc}'");
         $db->close();
         var_dump($password_hash);
@@ -13,7 +14,8 @@ class Auth
 
     public static function init(): bool|string
     {
-        $db = new SQLite3(DB_DIR.'beck.db');
+        // $db = new SQLite3(DB_DIR.'beck.db');
+        $db = new SQLite3(DB_FILE);
         $res = $db->query("SELECT id, status FROM bk_user limit 1 offset 0");
 
         $offset = rand(3,13);
@@ -22,7 +24,7 @@ class Auth
         $token_hash = password_hash($token, PASSWORD_DEFAULT);
 
         $row = $res->fetchArray();
-        if ($row == false) {
+        if (!$row) {
             $sql = "INSERT INTO bk_user(login_acc, login_pwd) VALUES ('admin', '{$token_hash}')";
             $db->exec($sql);
         }
