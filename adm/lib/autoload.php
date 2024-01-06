@@ -4,7 +4,7 @@ function class_autoloader($class_name): bool
     $class_name = strtolower($class_name);
     $class_file = __DIR__ . DIRECTORY_SEPARATOR . $class_name . '.php';
 
-    if (isset($class_file) && file_exists($class_file)) {
+    if (file_exists($class_file)) {
         require_once $class_file;
     }
 
