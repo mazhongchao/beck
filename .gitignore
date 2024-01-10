@@ -1,3 +1,5 @@
 .DS_Store
 .vscode/
-./data/beck.db
+.git/
+.public/
+.adm/data/beck.db
