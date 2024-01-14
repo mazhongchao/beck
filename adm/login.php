@@ -1,12 +1,17 @@
 <?php
 require 'base.php';
 
+$view = new Template(ADM_DIR."template/admin");
+if (!file_exists(DB_FILE)) {
+    $view->display('init.html');
+}
+
 if (isset($_SESSION['bk_sess'])) {
     header("Location: ./article.php");
     return;
 }
 
-$view = new Template(ADM_DIR."template/admin");
+
 
 if (isset($_POST['login_acc']) && isset($_POST['login_pwd'])) {
     $login_acc = trim($_POST['login_acc']);
@@ -47,8 +52,10 @@ else if (isset($_POST['new_pwd'])) {
 }
 
 else {
+    echo "xxxx";
     $ret = Auth::init();
     if ($ret !== false) {
+        echo "yyyy";
         $init_msg = "初始账号和密码是: admin/{$ret}。该密码仅显示一次，请立即登录并更改密码，否则将无法使用Beck";
         $view->assign(['msg' => $init_msg]);
         $view->display('login.html');
