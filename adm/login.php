@@ -11,8 +11,6 @@ if (isset($_SESSION['bk_sess'])) {
     return;
 }
 
-
-
 if (isset($_POST['login_acc']) && isset($_POST['login_pwd'])) {
     $login_acc = trim($_POST['login_acc']);
     $login_pwd = trim($_POST['login_pwd']);
